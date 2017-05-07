@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="31" passed="31">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="434" started-at="2017-03-06T09:55:53Z" finished-at="2017-03-06T09:55:53Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="434" started-at="2017-03-06T09:55:53Z" finished-at="2017-03-06T09:55:53Z">
+      <class name="org.kossowski.optima.util.MarshallerBuilderTest">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeClass" is-config="true" duration-ms="258" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="addrAdresMeldunkowy()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="addrAdresMeldunkowy" duration-ms="9" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addrAdresMeldunkowy -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="addrAdresZamieszkania()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="addrAdresZamieszkania" duration-ms="3" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addrAdresZamieszkania -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="appAppOptima()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="appAppOptima" duration-ms="24" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- appAppOptima -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="appFactorAppOptima()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="appFactorAppOptima" duration-ms="4" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- appFactorAppOptima -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="appFactorAppOptima1()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="appFactorAppOptima1" duration-ms="3" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- appFactorAppOptima1 -->
+        <test-method status="PASS" signature="appFactorAppOptima2()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="appFactorAppOptima2" duration-ms="8" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- appFactorAppOptima2 -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docDecyzja()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docDecyzja" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docDecyzja -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docDzialalnoscGospodarcza()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docDzialalnoscGospodarcza" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docDzialalnoscGospodarcza -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docInne()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docInne" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docInne -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docOdcinek()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docOdcinek" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docOdcinek -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docOswiadczenie()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docOswiadczenie" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docOswiadczenie -->
+        <test-method status="PASS" signature="docPasek()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docPasek" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docPasek -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docRmua()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docRmua" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docRmua -->
+        <test-method status="PASS" signature="docWyciagBankowy()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docWyciagBankowy" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docWyciagBankowy -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docZaswiadczenieZp()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docZaswiadczenieZp" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docZaswiadczenieZp -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="docZaswiadczenieZus()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="docZaswiadczenieZus" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- docZaswiadczenieZus -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwDzialalnoscGpodarcza()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwDzialalnoscGpodarcza" duration-ms="4" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwDzialalnoscGpodarcza -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwEmerytura()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwEmerytura" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwEmerytura -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwGospodarstwoRolne()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwGospodarstwoRolne" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwGospodarstwoRolne -->
+        <test-method status="PASS" signature="dwInneDochod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwInneDochod" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwInneDochod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwInneWydatek()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwInneWydatek" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwInneWydatek -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwMOPS()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwMOPS" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwMOPS -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwPraca()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwPraca" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwPraca -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwPracaBrakDokumentow()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwPracaBrakDokumentow" duration-ms="3" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwPracaBrakDokumentow -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwRenta()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwRenta" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwRenta -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwUmowaDzielo()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwUmowaDzielo" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwUmowaDzielo -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwUmowaZlecenie()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwUmowaZlecenie" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwUmowaZlecenie -->
+        <test-method status="PASS" signature="dwZajecieKomornicze()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwZajecieKomornicze" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwZajecieKomornicze -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="dwZasilekPrzedemerytalny()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="dwZasilekPrzedemerytalny" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dwZasilekPrzedemerytalny -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="posrPosrednictwoApp()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="posrPosrednictwoApp" duration-ms="2" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- posrPosrednictwoApp -->
+        <test-method status="PASS" signature="posrPosrednictwoFactor()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="posrPosrednictwoFactor" duration-ms="1" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- posrPosrednictwoFactor -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:org.kossowski.optima.util.MarshallerBuilderTest@73846619]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-03-06T10:55:53Z" finished-at="2017-03-06T10:55:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+      </class> <!-- org.kossowski.optima.util.MarshallerBuilderTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<!--  path2 -->
+    <body>
+    	<p:panel visible="#{newAppDBController.ctx.wnioskodawca.dokument == 'RMUA'}">
+			<h:panelGrid columns="2">
+				<h:outputText value="Skan:"/>
+				<p:selectBooleanCheckbox value="#{newAppDBController.dokumentMap['RMUA'].czyZeskanowany}"/>
+				<h:outputText value="Podstawa wymiaru składki:" />
+				<p:inputNumber value="#{newAppDBController.dokumentMap['RMUA'].podstawaWymiaruSkladki}"/>
+				<h:outputText value="Za miesiąc:" />
+				<p:calendar pattern="MM.yyyy" value="#{newAppDBController.dokumentMap['RMUA'].zaMiesiac}"/>
+			</h:panelGrid>
+		</p:panel>
+    </body>
+</html>

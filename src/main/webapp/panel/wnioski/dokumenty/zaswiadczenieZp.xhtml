@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	  <!--  path1 -->
+
+    <body>
+		<p:panel visible="#{newAppDBController.ctx.wnioskodawca.dokument == 'ZASWIADCZENIE_ZP'}">
+			<h:panelGrid columns="2">
+				<h:outputText value="Skan:"/>
+				<p:selectBooleanCheckbox value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].czyZeskanowany}"/>
+				<h:outputText value="Kwota brutto:"/>
+				<p:inputNumber value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].kwotaBrutto}" />
+				<h:outputText value="Kwota netto:"/>
+				<p:inputNumber value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].kwotaNetto}"/>
+				<h:outputText value="Znak:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].znak}"/>
+				<h:outputText value="Data wystawienia:"/>
+				<p:calendar  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].dataWystawienia}"/>
+				<h:outputText value="Umowa:"/>
+				<p:selectOneMenu  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].umowaOPrace.typ}">
+					<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+					<f:selectItems value="#{newAppDBController.umowaTypItems}" var="item"
+						itemValue="#{item}" itemLabel="#{item.label}" 
+					/>
+				</p:selectOneMenu>
+				<h:outputText value="Data od:"/>
+				<p:calendar  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].umowaOPrace.dataOd}"/>
+				<h:outputText value="Data do:"/>
+				<p:calendar  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].umowaOPrace.dataDo}"/>
+				<h:outputText value="Etat:"/>
+				<p:selectOneMenu  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].umowaOPrace.etat}">
+					<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+					<f:selectItems value="#{newAppDBController.etatItems}" var="item"
+						itemValue="#{item}" itemLabel="#{item.label}" 
+					/>
+				</p:selectOneMenu>
+				<h:outputText value="Stanowisko:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].umowaOPrace.stanowisko}"/>
+				<h:outputText value="Okres naliczenia kwoty brutto:"/>
+				<p:selectOneMenu  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].okresNaliczeniaKwotyBrutto}">
+					<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+					<f:selectItems value="#{newAppDBController.okresNaliczeniaKwotyBruttoItems}" var="item"
+						itemValue="#{item}" itemLabel="#{item.label}" 
+					/>
+				</p:selectOneMenu>
+				<h:outputText value="Obciążenia komornicze:"/>
+				<p:selectOneMenu  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].obciazenieKomornicze}">
+					<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+					<f:selectItems value="#{newAppDBController.takNieItems}" var="item"
+						itemValue="#{item}" itemLabel="#{item.label}" 
+					/>
+				</p:selectOneMenu>
+				<h:outputText value="Alimenty:"/>
+				<p:selectOneMenu  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].alimenty}">
+					<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+					<f:selectItems value="#{newAppDBController.takNieItems}" var="item"
+						itemValue="#{item}" itemLabel="#{item.label}" 
+					/>
+				</p:selectOneMenu>
+				<h:outputText value="Wystawił:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].wystawil}"/>				
+				<h:outputText value="Nazwa pracodawcy:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].nazwaPracodawcy}"/>
+				<h:outputText value="Ulica:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].adres.ulica}"/>
+				<h:outputText value="Nr domu:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].adres.nrDomu}"/>
+				<h:outputText value="Nr lokalu:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].adres.nrLokalu}"/>
+				<h:outputText value="Kod pocztowy:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].adres.kodPocztowy}"/>
+				<h:outputText value="Miejscowość:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].adres.miejscowosc}" />
+				<h:outputText value="Telefon:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].telefon}"/>
+				<h:outputText value="NIP:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].nip}"/>
+				<h:outputText value="REGON:"/>
+				<p:inputText  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].regon}"/>
+				<h:outputText value="Zgoda na kontakt:"/>
+				<p:selectBooleanCheckbox  value="#{newAppDBController.dokumentMap['ZASWIADCZENIE_ZP'].zgodaNaKontakt}"/>
+			</h:panelGrid>
+		</p:panel>
+    </body>
+</html>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int-jdbc="http://www.springframework.org/schema/integration/jdbc"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:int-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:int-ftp="http://www.springframework.org/schema/integration/ftp"
+	xmlns:int-sftp="http://www.springframework.org/schema/integration/sftp"
+	xsi:schemaLocation="http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
+		http://www.springframework.org/schema/integration/jdbc http://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc-4.3.xsd
+		http://www.springframework.org/schema/integration/sftp http://www.springframework.org/schema/integration/sftp/spring-integration-sftp-4.3.xsd
+		http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-4.3.xsd
+		http://www.springframework.org/schema/integration/ftp http://www.springframework.org/schema/integration/ftp/spring-integration-ftp-4.3.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.3.xsd">
+
+	
+	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="view">
+                    <bean class="org.kossowski.optima.web.scopes.ViewScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+	
+
+	<oxm:jaxb2-marshaller id="marshaller">
+		<oxm:class-to-be-bound name="org.kossowski.optima.AppOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.SmsOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.CncOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.RunOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.GiroOptima" />
+		<!--  <oxm:class-to-be-bound name="org.kossowski.optima.Dec0Optima" /> -->
+		<oxm:class-to-be-bound name="org.kossowski.optima.ExpOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.ErrOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.DecOptima" />
+		<!--  <oxm:class-to-be-bound name="org.kossowski.optima.Dec2Optima" /> -->
+		<oxm:class-to-be-bound name="org.kossowski.optima.GoOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.SentOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresApp" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresZamieszkania" /> 
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresMeldunkowy" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Decyzja" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.DzialalnoscGospodarcza" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Inne" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Odcinek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Oswiadczenie" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Pasek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Rmua" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.WyciagBankowy" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.ZaswiadczenieZp" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.ZaswiadczenieZus" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.DochodDzialalnoscGospodarcza" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Emerytura" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.GospodarstwoRolne" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.InneDochod" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.InneWydatek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.MOPS" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Praca" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.PracaBrakDokumentow" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Renta" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.UmowaDzielo" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.UmowaZlecenie" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.ZajecieKomornicze" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.ZasilekPrzedemerytalny" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.dec.Offer" />
+	</oxm:jaxb2-marshaller>
+
+	<!-- 
+	<bean id="testChannelInterceptor" class="org.kossowski.inegration.TestChannelInterceptor" />
+	-->
+
+	<int:channel id="toTypeEnricher"/>
+	<int:channel id="toTypeRouter">
+		<int:interceptors>
+			<ref bean="testChannelInterceptor" />	
+		</int:interceptors>
+	</int:channel>
+
+<!--  Wyłączenie odpytywania bazy factor -->
+ <!-- 
+ 	<int-jdbc:inbound-channel-adapter id="jdbcTestAdapter"
+		data-source="dataSource"
+		query="select id, status_wniosku from wnioski where status_wniosku in ( 1, 900,901,902,903) and bank=93"
+		update="update wnioski set status_wniosku=1000 where id=(:id)"
+		max-rows-per-poll="1" channel="toTypeEnricher">
+		<int:poller fixed-delay="9000" />
+	</int-jdbc:inbound-channel-adapter>
+ -->
+ 
+ 	<int:header-enricher id="fromFactorEnricher" 	
+ 		input-channel="toTypeEnricher"
+ 		output-channel="toTypeRouter">
+ 		
+ 		<int:header name="wn_id" 		expression="@fromFactorHeaderEnricher.setId(payload)"></int:header>
+ 		<int:header name="wn_status" 	expression="@fromFactorHeaderEnricher.setStatus(payload)"></int:header>
+ 		<int:header name="wn_type" 		expression="@fromFactorHeaderEnricher.setType(payload)"></int:header>
+ 		<int:header name="wn_timestamp" expression="@fromFactorHeaderEnricher.setTimestamp()"></int:header>
+ 	</int:header-enricher>
+ 
+	
+	
+	<int:channel id="chAPP"/>
+	<int:channel id="chSMS"/>
+	<int:channel id="chCNC"/>
+	<int:channel id="chRUN"/>
+	<int:channel id="chGIRO"/>
+	
+	<int:header-value-router  header-name="wn_type"  input-channel="toTypeRouter">
+		<int:mapping value="APP"  channel="chAPP"/>
+		<int:mapping value="SMS"  channel="chSMS"/>
+		<int:mapping value="CNC"  channel="chCNC"/>
+		<int:mapping value="RUN"  channel="chRUN"/>
+		<int:mapping value="GIRO" channel="chGIRO"/>
+		
+	</int:header-value-router>
+	
+	
+	
+	<int:channel id="chChainsOut"></int:channel>
+	
+	<!-- 
+	<int:service-activator
+		input-channel="toInputRouter" 
+		expression="@wniosekHandler.print(payload)" />
+	-->
+	
+	
+	
+	<int:chain id="APPchain" input-channel="chAPP" output-channel="chChainsOut"> 
+		<int:transformer expression="@appTransformer.toOptima(payload,headers)"></int:transformer>
+	</int:chain>
+	
+	<int:chain id="SMSchain"  input-channel="chSMS" output-channel="chChainsOut">
+		<int:transformer expression="@smsTransformer.toOptima(payload,headers)"></int:transformer>
+	</int:chain>
+	
+	<int:chain id="CNCchain"  input-channel="chCNC" output-channel="chChainsOut">
+		<int:transformer expression="@cncTransformer.toOptima(payload,headers)"></int:transformer>
+	</int:chain>
+	
+	<int:chain id="RUNchain"  input-channel="chRUN" output-channel="chChainsOut">
+		<int:transformer expression="@runTransformer.toOptima(payload,headers)"></int:transformer>
+	</int:chain>
+	
+	<int:chain id="GIROchain"  input-channel="chGIRO" output-channel="chChainsOut">
+		<int:transformer expression="@giroTransformer.toOptima(payload,headers)"></int:transformer>
+	</int:chain>
+	
+	
+	<bean id="outputInterceptor" class="org.kossowski.integration.OutputChannelInterceptor" />
+	
+	<int:channel id="toSetStatusTransformer">
+		<int:interceptors>
+			<ref bean="outputInterceptor"/>
+		</int:interceptors>
+	</int:channel>
+	
+	
+	
+	<bean id="resultTransformer" 
+		class="org.springframework.integration.xml.transformer.ResultToStringTransformer" >
+		<!-- 
+		<property name="outputProperties">
+			
+			<props>
+				<prop key="javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT">true</prop>
+			</props>
+			
+		</property>
+		-->
+	</bean>
+	
+	<int-xml:marshalling-transformer marshaller="marshaller" input-channel="chChainsOut"
+	output-channel="toSetStatusTransformer"
+	result-transformer="resultTransformer"
+	>
+	</int-xml:marshalling-transformer>
+	
+	
+	<bean id="ftpClientFactory"
+		class="org.springframework.integration.ftp.session.DefaultFtpSessionFactory">
+		<property name="host" value="192.168.0.136" />
+		
+		<property name="username" value="si" />
+		<property name="password" value="si" />
+	</bean>
+	
+	
+	<bean id="sftpClientFactory" 
+		class="org.springframework.integration.sftp.session.DefaultSftpSessionFactory">
+  	
+    	<property name="host" value="195.140.191.20"/>
+    	
+    	<property name="knownHosts" value="/Users/jkossow/.ssh/known_hosts"/>
+    	<property name="password" value="Au?T0k#r3@Hj4"/>
+    	
+    	<property name="user" value="tstautokredyty"/>
+    
+    	
+	</bean>
+	
+	<int-ftp:outbound-channel-adapter session-factory="sftpClientFactory"
+		channel="toSetStatusTransformer"
+		remote-directory="/tstautokredyty2opt"
+		remote-filename-generator-expression=
+			"headers['wn_type'] +'_' + headers['wn_id'] + '_' + headers['wn_timestamp'] + '.xml'"
+	/>
+	
+	<!-- <int-ftp:inbound-channel-adapter
+		id="sftpInAdapter"
+		remote-directory="/home/si/toFactor"
+		session-factory="sftpClientFactory"
+		delete-remote-files="true" 
+		local-directory="/tmp/in"
+		
+		
+		
+		channel="toInputEnricher"
+		>
+		<int:poller fixed-delay="5333"/>
+			
+	</int-ftp:inbound-channel-adapter> -->
+	
+	<int-sftp:inbound-channel-adapter 
+		id="ftpInAdapter"
+		remote-directory="/opt2tstautokredyty"
+		session-factory="sftpClientFactory"
+		delete-remote-files="true" 
+		local-directory="/tmp/in"
+		
+		preserve-timestamp="true"
+		
+		channel="toInputEnricher">
+		<int:poller fixed-delay="5333"/>
+	</int-sftp:inbound-channel-adapter>		
+	
+	
+	<int:channel id="toInputEnricher" />
+	<int:channel id="toInputRouter" />
+	
+	<int:header-enricher input-channel="toInputEnricher" output-channel="toInputRouter">
+		<int:header name="wn_type" expression="@fromOptimaHeaderEnricher.setType(payload)"></int:header>
+	</int:header-enricher>
+ 	
+ 	<int:header-value-router header-name="wn_type" input-channel="toInputRouter" 
+ 			default-output-channel="toUnmarshall" resolution-required="false">
+ 		<int:mapping value="DEC0"  channel="toDEC0unmarshall"/>
+ 		<int:mapping value="DEC"   channel="toDECunmarshall"/>
+ 		<int:mapping value="DEC2"  channel="toDEC2unmarshall"/>
+ 		
+ 		<!-- <int:mapping value="ERR"  channel="toUnmarshall"/>
+ 		<int:mapping value="EXP"  channel="toUnmarshall"/>
+ 		<int:mapping value="SENT"  channel="toUnmarshall"/>
+ 		<int:mapping value="GO"  channel="toUnmarshall"/> -->
+ 	
+ 	</int:header-value-router>
+ 	
+ 	<int:channel id="toDEC0unmarshall"/>
+ 	<int:channel id="toDECunmarshall" />
+ 	<int:channel id="toDEC2unmarshall" />
+ 	<int:channel id="toUnmarshall" />
+ 	
+ 	<int:channel id="toOptimaRouter" />
+ 	
+ 	<int:transformer 
+ 		input-channel="toDEC0unmarshall"
+ 		output-channel="toOptimaRouter"
+ 		expression="@decUnmarshallTransformer.unmarshallDEC0(payload)" />
+ 	
+ 	<int:transformer 
+ 		output-channel="toOptimaRouter"
+ 		input-channel="toDECunmarshall"
+ 		expression="@decUnmarshallTransformer.unmarshallDEC(payload)" />
+ 	
+ 	<int:transformer 
+ 		output-channel="toOptimaRouter"
+ 		input-channel="toDEC2unmarshall"
+ 		expression="@decUnmarshallTransformer.unmarshallDEC2(payload)" />
+ 		
+ 	<int-xml:unmarshalling-transformer unmarshaller="marshaller"
+ 		input-channel="toUnmarshall"
+ 		output-channel="toOptimaRouter" />
+ 		
+ 		
+ 	<int:channel id="dec0ServAct" />
+ 	<int:channel id="decServAct" />
+ 	<int:channel id="dec2ServAct" />		
+ 	<int:channel id="errServAct" />
+ 	<int:channel id="expServAct" />
+ 	<int:channel id="sentServAct" />
+ 	<int:channel id="goServAct"/>	
+ 	
+ 	
+ 	<int:payload-type-router input-channel="toOptimaRouter">
+ 		<int:mapping type="org.kossowski.optima.Dec0Optima" channel="dec0ServAct"/>
+ 		<int:mapping type="org.kossowski.optima.DecOptima" channel="decServAct"/>
+ 		<int:mapping type="org.kossowski.optima.Dec2Optima" channel="dec2ServAct"/>
+ 		<int:mapping type="org.kossowski.optima.ErrOptima" channel="errServAct"/>
+ 		<int:mapping type="org.kossowski.optima.ExpOptima" channel="expServAct"/>
+ 		<int:mapping type="org.kossowski.optima.SentOptima" channel="sentServAct"/>
+ 		<int:mapping type="org.kossowski.optima.GoOptima" channel="goServAct"/>
+ 	</int:payload-type-router>
+ 	
+ 	<int:service-activator
+		input-channel="dec0ServAct" 
+		expression="@wniosekHandler.print(payload)" />
+ 	
+ 	<int:service-activator
+		input-channel="decServAct" 
+		expression="@wniosekHandler.print(payload)" />
+		
+ 	<int:service-activator
+		input-channel="dec2ServAct" 
+		expression="@wniosekHandler.print(payload)" />
+ 	
+ 	<int:service-activator
+		input-channel="errServAct" 
+		expression="@wniosekHandler.print(payload)" />
+ 	
+ 	<int:service-activator
+		input-channel="expServAct" 
+		expression="@wniosekHandler.print(payload)" />
+ 	
+ 	<int:service-activator
+		input-channel="sentServAct" 
+		expression="@wniosekHandler.print(payload)" />
+ 	
+ 	<int:service-activator
+		input-channel="goServAct" 
+		expression="@wniosekHandler.print(payload)" />
+ 	
+</beans>

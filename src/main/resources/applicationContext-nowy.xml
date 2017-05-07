@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int-jdbc="http://www.springframework.org/schema/integration/jdbc"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:int-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:int-ftp="http://www.springframework.org/schema/integration/ftp"
+	xmlns:int-sftp="http://www.springframework.org/schema/integration/sftp"
+	xmlns:int-jpa="http://www.springframework.org/schema/integration/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
+		http://www.springframework.org/schema/integration/jdbc http://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc-4.2.xsd
+		http://www.springframework.org/schema/integration/sftp http://www.springframework.org/schema/integration/sftp/spring-integration-sftp-4.2.xsd
+		http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-4.2.xsd
+		http://www.springframework.org/schema/integration/ftp http://www.springframework.org/schema/integration/ftp/spring-integration-ftp-4.2.xsd
+		http://www.springframework.org/schema/integration/jpa http://www.springframework.org/schema/integration/jpa/spring-integration-jpa-4.2.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.2.xsd">
+
+	
+
+	<oxm:jaxb2-marshaller id="marshaller">
+		<oxm:class-to-be-bound name="org.kossowski.optima.AppOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.Dec0Optima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresApp" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresZamieszkania" /> 
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresMeldunkowy" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Decyzja" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.DzialalnoscGospodarcza" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Inne" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Odcinek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Oswiadczenie" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Pasek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Rmua" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.WyciagBankowy" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.ZaswiadczenieZp" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.ZaswiadczenieZus" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.DochodDzialalnoscGospodarcza" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Emerytura" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.GospodarstwoRolne" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.InneDochod" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.InneWydatek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.MOPS" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Praca" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.PracaBrakDokumentow" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Renta" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.UmowaDzielo" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.UmowaZlecenie" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.ZajecieKomornicze" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.ZasilekPrzedemerytalny" />
+	</oxm:jaxb2-marshaller>
+
+
+	<int:channel id="ch1" />
+	<int:channel id="ch2" />
+	<int:channel id="ch3" />
+
+<!-- 	<int-jpa:inbound-channel-adapter id="factorJpaPU"
+		entity-manager-factory="entityManagerFactory"
+		native-query="select * from wnioski where status_wniosku in ( 1 ) and bank=93"
+		entity-class="org.kossowski.domain.Wniosek"
+		max-results="1"
+		channel="ch1"
+	>
+	
+		<int:poller  fixed-delay="10000"/>
+	</int-jpa:inbound-channel-adapter>
+ -->	
+ 
+ 	<int-jdbc:inbound-channel-adapter id="jdbcTestAdapter"
+		data-source="dataSource"
+		query="select id, status_wniosku from wnioski where status_wniosku=1 and bank=93"
+		update="update wnioski set status_wniosku=1000 where id=(:id)"
+		max-rows-per-poll="1" channel="ch1">
+		<int:poller fixed-delay="9000" />
+	</int-jdbc:inbound-channel-adapter>
+ 
+ 
+ 	<int:header-enricher id="fromFactorEnricher"
+ 	
+ 		input-channel="ch1"
+ 		output-channel="ch2">
+ 		
+ 		<int:header name="id" expression="@headerEnricher.setIdent(payload)"></int:header>
+ 		<int:header name="id" expression="@headerEnricher.setDateTimeString"></int:header>
+ 	</int:header-enricher>
+ 
+	<int:service-activator
+		input-channel="ch2" expression="@wniosekHandler.print(payload)">
+		
+	</int:service-activator>
+	
+	
+	
+</beans>

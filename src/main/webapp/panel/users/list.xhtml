@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+</h:head>
+<h:body>
+
+	<ui:composition template="/panel/templates/optimaTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/panel/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+			<!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+			<h:form>
+				<p:growl />
+                <p:dataTable value="#{userController.findAll}" var="u" paginator="true" rows="15"
+                	
+                >
+                	<p:column headerText="Nazwisko" sortBy="#{u.nazwisko}"  >
+                		<h:outputText value="#{u.nazwisko}"/>&nbsp;
+                	</p:column>
+                	<p:column headerText="Imię" sortBy="#{u.imie}">
+                		<h:outputText value="#{u.imie}"/>
+                	</p:column>
+                	<p:column headerText="Login" >
+                		<h:outputText value="#{u.login}"/>
+                	</p:column>
+                	<p:column headerText="Password" >
+                		<h:outputText value="#{u.password}"/>
+                	</p:column>
+                </p:dataTable>                
+            </h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

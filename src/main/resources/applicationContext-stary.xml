@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int-jdbc="http://www.springframework.org/schema/integration/jdbc"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-file="http://www.springframework.org/schema/integration/file"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
+	xmlns:int-xml="http://www.springframework.org/schema/integration/xml"
+	xmlns:int-ftp="http://www.springframework.org/schema/integration/ftp"
+	xmlns:int-sftp="http://www.springframework.org/schema/integration/sftp"
+	xmlns:int-jpa="http://www.springframework.org/schema/integration/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
+		http://www.springframework.org/schema/integration/jdbc http://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc-4.2.xsd
+		http://www.springframework.org/schema/integration/sftp http://www.springframework.org/schema/integration/sftp/spring-integration-sftp-4.2.xsd
+		http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration/file http://www.springframework.org/schema/integration/file/spring-integration-file-4.2.xsd
+		http://www.springframework.org/schema/integration/ftp http://www.springframework.org/schema/integration/ftp/spring-integration-ftp-4.2.xsd
+		http://www.springframework.org/schema/integration/jpa http://www.springframework.org/schema/integration/jpa/spring-integration-jpa-4.2.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.2.xsd">
+
+
+	
+
+	<bean id="postTransformerChannelInterceptor"
+		class="org.kossowski.inegration.PostTranformationChannelInterceptor" />
+
+	<int-xml:marshalling-transformer
+		marshaller="marshaller" input-channel="ch2" output-channel="ch3"
+		result-type="StringResult"></int-xml:marshalling-transformer>
+
+	<int:channel id="ch1" />
+	<int:channel id="ch2" />
+	
+	
+
+
+	<int:channel id="ch3">
+		<int:interceptors>
+			<ref bean="postTransformerChannelInterceptor" />
+		</int:interceptors>
+
+	</int:channel>
+	
+	<int:channel id="ch4" />
+	<int:channel id="ch5" />
+	<int:channel id="ch6" />
+
+	<int-jdbc:inbound-channel-adapter id="jdbcTestAdapter"
+		data-source="dataSource"
+		query="select id from wnioski where status_wniosku=1 and bank=93"
+		update="update wnioski set status_wniosku=1000 where id=(:id)"
+		max-rows-per-poll="1" channel="ch1">
+		<int:poller fixed-delay="9000" />
+	</int-jdbc:inbound-channel-adapter>
+
+	<int:transformer id="dtoTransformer" input-channel="ch1"
+		output-channel="ch2" expression="@testUserTransformer.toDto(payload)" />
+
+
+
+
+	
+
+	
+
+	<bean id="handler" class="org.kossowski.inegration.Handler" />
+
+	
+
+	 
+	<int-file:outbound-channel-adapter
+		id="outputFileChannelAdapter" channel="ch5" directory="file:/tmp/out"
+		delete-source-files="true" 
+		filename-generator-expression="headers['typ'] +'_' + headers['ident'] + '_' + new java.text.SimpleDateFormat( 'YYYYMMddHHmmss' ).format( new java.util.Date() ) + '.xml'" />
+	
+
+
+	<oxm:jaxb2-marshaller id="marshaller">
+		<oxm:class-to-be-bound name="org.kossowski.optima.AppOptima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.Dec0Optima" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresApp" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresZamieszkania" /> 
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.AdresMeldunkowy" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Decyzja" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.DzialalnoscGospodarcza" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Inne" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Odcinek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Oswiadczenie" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Pasek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.Rmua" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.WyciagBankowy" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.ZaswiadczenieZp" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dokumenty.ZaswiadczenieZus" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.DochodDzialalnoscGospodarcza" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Emerytura" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.GospodarstwoRolne" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.InneDochod" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.InneWydatek" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.MOPS" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Praca" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.PracaBrakDokumentow" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.Renta" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.UmowaDzielo" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.UmowaZlecenie" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.ZajecieKomornicze" />
+		<oxm:class-to-be-bound name="org.kossowski.optima.app.dochodWydatek.ZasilekPrzedemerytalny" />
+	</oxm:jaxb2-marshaller>
+
+	<bean id="ftpClientFactory"
+		class="org.springframework.integration.ftp.session.DefaultFtpSessionFactory">
+		<property name="host" value="192.168.0.140" />
+		
+		<property name="username" value="si" />
+		<property name="password" value="si" />
+	</bean>
+	
+	
+	<bean id="sftpClientFactory"
+		class="org.springframework.integration.sftp.session.DefaultSftpSessionFactory">
+  	
+    	<property name="host" value="195.140.191.20"/>
+    	
+    	<property name="knownHosts" value="/Users/jkossow/.ssh/known_hosts"/>
+    	<property name="password" value="Au?T0k#r3@Hj4"/>
+    	
+    	<property name="user" value="tstautokredyty"/>
+    
+    	
+	</bean>
+	
+	<int-ftp:outbound-channel-adapter session-factory="sftpClientFactory"
+		channel="ch6"
+		remote-directory="/tstautokredyty2opt"
+		remote-filename-generator-expression=
+			"headers['typ'] +'_' + headers['ident'] + '_' + new java.text.SimpleDateFormat( 'YYYYMMddHHmmss' ).format( new java.util.Date() ) + '.xml'">
+	</int-ftp:outbound-channel-adapter>
+
+	<int-sftp:outbound-channel-adapter session-factory="ftpClientFactory"
+		channel="ch4"
+		remote-directory="/home/si"
+		remote-filename-generator-expression=
+			"headers['typ'] +'_' + headers['ident'] + '_' + new java.text.SimpleDateFormat( 'YYYYMMddHHmmss' ).format( new java.util.Date() ) + '.xml'"
+	>
+		
+	</int-sftp:outbound-channel-adapter>
+
+	<int-sftp:inbound-channel-adapter 
+		id="ftpInAdapter"
+		remote-directory="/opt2tstautokredyty"
+		session-factory="sftpClientFactory"
+		delete-remote-files="true" 
+		local-directory="/tmp/in"
+		
+		preserve-timestamp="true"
+		
+		channel="ch7">
+		<int:poller fixed-delay="5333"/>
+			
+	</int-sftp:inbound-channel-adapter>
+	
+		
+	<int:recipient-list-router id="routerWyjsciowy"  input-channel="ch3" >
+		<int:recipient channel="ch4"/>
+		<int:recipient channel="ch5"/>
+		<int:recipient channel="ch6"/>
+	</int:recipient-list-router>
+	
+	<int:channel id="ch7" />
+	<int:channel id="ch8" />
+	
+	<int-xml:unmarshalling-transformer 
+		input-channel="ch7"
+		output-channel="ch8"
+		unmarshaller="marshaller">
+		
+	</int-xml:unmarshalling-transformer>
+	
+	<int:service-activator
+		input-channel="ch8"
+		expression="@testHandlerMapping.printOffers( payload )">
+	</int:service-activator>
+	
+	<int-jpa:inbound-channel-adapter >
+	</int-jpa:inbound-channel-adapter>
+	
+</beans>

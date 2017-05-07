@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+	</h:head>
+
+	<ui:composition template="/panel/templates/optimaTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/panel/menu.xhtml" />
+		</ui:define>
+		<ui:define name="content">
+			<h:outputText value="#{view.viewId}" /> 
+			<h:form>
+				<p:growl  id="messages"/>
+				
+                <p:tabView  style="width:80%;" >
+                	<p:tab title="Dane kredytu" >
+                		<p:panelGrid  >
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Krota kredytu:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText  value="#{newAppPrescoringController.app.dane.kwota}" required="false" requiredMessage="Kwota kredytu - wartość wymagana"/>
+                				</p:column>
+                			</p:row>
+                			
+                			<p:row>
+                				<p:column>
+                					<h:outputText value = "Ilość rat:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText id="iloscRat" value="#{newAppPrescoringController.app.dane.okres}"  required="false" requiredMessage="Ilość rat - wartość wymagana"/>
+                				</p:column>
+                			</p:row>
+                			
+                			<p:row>
+                				<p:column colspan="2">
+                					<p:slider for="iloscRat" step="6"/>
+                				</p:column>
+                			</p:row>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Dane wnioskodawcy">
+                		<p:panelGrid >
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Nazwisko:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppPrescoringController.wnioskodawcaApp.nazwisko}" required="true" requiredMessage="nazwisko"/>
+                				</p:column>	
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Imię:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppPrescoringController.wnioskodawcaApp.imie}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="PESEL:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppPrescoringController.wnioskodawcaApp.pesel}" />
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Dowód osobisty:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppPrescoringController.wnioskodawcaApp.dowodOsobisty}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Stan cywilny:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppPrescoringController.wnioskodawcaApp.stanCywilny}" required="true">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppPrescoringController.stanCywilnyItems}"
+                							var="sc" itemValue="#{sc}" itemLabel="#{sc.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Liczba osób w rodzinie:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppPrescoringController.wnioskodawcaApp.ileOsobWRodzinie}" />
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column colspan="2">
+                					<p:dataTable id="telDataTable"   style="width:60%;"   value="#{newAppPrescoringController.wnioskodawcaApp.telefony}" var="tel">
+                						<f:facet name="header">Telefony</f:facet>
+                						<p:column headerText="Numer">
+                							<h:outputText value="#{tel.numer}"/>
+                						</p:column>
+                						<p:column headerText="Komórkowy?">
+                							<p:selectBooleanCheckbox value="#{tel.komorka}"/>
+                						</p:column>
+                					</p:dataTable>
+                						<p:commandButton update="telDataTable" value="Nowy" ajax="true" immediate="true"  action="#{newAppPrescoringController.addTelefon}">
+                							
+                						</p:commandButton>
+                						<p:commandButton value="Popraw"></p:commandButton>
+                						<p:commandButton value="Usuń"></p:commandButton>
+                				</p:column>
+                			
+                			
+                			</p:row>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Adres zamieszkania" >
+                		<p:panelGrid columns="2">
+                			<h:outputText value="Ulica:"/>
+                			<p:inputText  value="#{newAppPrescoringController.adresZamieszkania.ulica}"/>
+                		
+							<h:outputText value="Nr domu:"/>
+                			<p:inputText  value="#{newAppPrescoringController.adresZamieszkania.nrDomu}"/>
+						
+							<h:outputText value="Nr lokalu:"/>
+                			<p:inputText  value="#{newAppPrescoringController.adresZamieszkania.nrLokalu}"/>
+                		
+                			<h:outputText value="kod pocztowy:"/>
+                			<p:inputText  value="#{newAppPrescoringController.adresZamieszkania.kod}"/>
+                		
+                			<h:outputText value="Miejscowosc:"/>
+                			<p:inputText  value="#{newAppPrescoringController.adresZamieszkania.miejscowosc}"/>
+                		
+                			<h:outputText value="Czas zamieszkiwania pod tym adresem:"/>
+                			<p:selectOneMenu value="#{newAppPrescoringController.adresZamieszkania.czasZamieszkaniaPodAdresem}">
+                				<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                				<f:selectItems value="#{newAppPrescoringController.czasZamieszkiwaniaPodAdresemItems}"
+                					var="v" itemValue="#{v}" itemLabel="${v.label}"
+                				/>
+                			</p:selectOneMenu>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Dochód/Wydatki">
+                		<p:panelGrid columns="2">
+                			<h:outputText value="źródło dochodu:" />
+                			<p:selectOneMenu value="#{newAppPrescoringController.dochodTyp}" required="true">
+                				<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+              					<f:selectItems value="#{newAppPrescoringController.dochodyItems}" var="d"
+              						itemValue="#{d}" itemLabel="#{d.label}"
+              					/>  				
+                			</p:selectOneMenu>
+                			<h:outputText value="Dochód netto:"/>
+                			<p:inputNumber value="#{newAppPrescoringController.dochodNetto}"/>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Zgody">
+                		<p:panelGrid columns="2">
+                			<h:outputText value = "Zgoda 2"/>
+                			<p:selectBooleanCheckbox />
+                			<h:outputText value = "Zgoda 5"/>
+                			<p:selectBooleanCheckbox></p:selectBooleanCheckbox>
+                			<h:outputText value = "Zgoda 7"/>
+                			<p:selectBooleanCheckbox></p:selectBooleanCheckbox>
+                		</p:panelGrid>
+                	</p:tab>
+                </p:tabView>
+                <p:spacer height="20" width="0"/>
+                <p:commandButton value="Zapisz"  action="#{newAppPrescoringController.saveApp}" update="messages"/>
+                <p:commandButton value="Pokaz XML"   action="#{newAppPrescoringController.pokazXML}" update="messages"/>               
+            </h:form>
+		</ui:define>
+	
+	</ui:composition>
+
+</html>

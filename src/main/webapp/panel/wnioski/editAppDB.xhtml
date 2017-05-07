@@ -1,0 +1,460 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+	</h:head>
+
+	<ui:composition template="/panel/templates/optimaTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/panel/menu.xhtml" />
+		</ui:define>
+		<ui:define name="content">
+			<h:outputText value="#{view.viewId}" /> 
+			<h:form id="form">
+				<p:growl  id="messages"/>
+				
+				
+                <p:tabView >
+                
+                	<p:tab title="Dane kredytu" >
+                		<p:panelGrid  >
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Krota kredytu:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText  value="#{newAppDBController.ctx.wniosek.kwotaKredytu}"  requiredMessage="Kwota kredytu - wartość wymagana"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value = "Ilość rat:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText id="iloscRat" value="#{newAppDBController.ctx.wniosek.iloscRat}"   requiredMessage="Ilość rat - wartość wymagana"/>
+                					<p></p>
+                					<p:slider for="iloscRat" step="6"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Miejsce podpisania:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wniosek.miejscePodpisania}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Data podpisania:"/>
+                				</p:column>
+                				<p:column>
+                					<p:calendar value="#{newAppDBController.ctx.wniosek.dataPodpisania}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Wniosek sporządził:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wniosek.ktoPodpisal}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Zródło informacji:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wniosek.zdrodloInformacji}">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.zrodloInformacjiItems}"
+                							var="zi" itemValue="#{zi}" itemLabel="#{zi.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Dane wnioskodawcy">
+                		<p:panelGrid style="width:60%;">
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Nazwisko:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.nazwisko}"  requiredMessage="nazwisko"/>
+                				</p:column>	
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Imię:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.imie}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="PESEL:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.pesel}" />
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Dowód osobisty:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.seriaNrDowodu}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Skan dowodu:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectBooleanCheckbox value="#{newAppDBController.ctx.wnioskodawca.skanDowodu}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Dyskrecja:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectBooleanCheckbox value="#{newAppDBController.ctx.wnioskodawca.dyskrecja}"/>
+                				</p:column>
+                			</p:row>
+                			
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Stan cywilny:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.stanCywilny}"  requiredMessage="Stan cywilny">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.stanCywilnyItems}"
+                							var="sc" itemValue="#{sc.factorId}" itemLabel="#{sc.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Miejsce urodzenia:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.miejsceUrodzenia}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Liczba osób w rodzinie:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputNumber value="#{newAppDBController.ctx.wnioskodawca.ileOsobWRodzinie}" />
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Wykształcenie:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.wyksztalcenie}"  requiredMessage="wykształcenie">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.wyksztalcenieEnumsItems}"
+                							var="item" itemValue="#{item.factorId}" itemLabel="#{item.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Rachunek za media:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectBooleanCheckbox value="#{newAppDBController.ctx.wnioskodawca.rachunekZaMedia}"/>
+                				</p:column>
+                			</p:row>
+
+                			<p:spacer/>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Telefon komórkowy:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.telKom}" />
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Telefon:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.telefon}" />
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Branża:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.branza}" requiredMessage="branża">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.branzaItems}"
+                							var="item" itemValue="#{item}" itemLabel="#{item.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Liczba kart kredytowych:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputNumber value="#{newAppDBController.ctx.wnioskodawca.liczbaKartKredytowych}" />
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Klient otrzymyje wypłatę:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.czasookresWyplaty}" requiredMessage="czasoWypłaty">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.czasookresWyplatyItems}"
+                							var="item" itemValue="#{item}" itemLabel="#{item.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="e-mail:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.email}" />
+                				</p:column>	
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Zgoda na kontakt:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.zgodaNaKontaktSMS}"  requiredMessage="zgoda na kotakt">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.zgodaNaKontaktSMSItems}"
+                							var="item" itemValue="#{item}" itemLabel="#{item.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Rachunek bankowy:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.rachunekBankowy}" />
+                				</p:column>	
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Nazwa banku:"/>
+                				</p:column>
+                				<p:column>
+                					<p:inputText value="#{newAppDBController.ctx.wnioskodawca.nazwaBanku}" />
+                				</p:column>	
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Zgoda nadpłata:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectBooleanCheckbox value="#{newAppDBController.ctx.wnioskodawca.zgodaNaplata}"/>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Czas posiadania rachunku bankowego:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.czasPosiadaniaRachunkuBankowego}" requiredMessage="czasposiadaniaRachunkuBankwoego">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.czasPosiadaniaRachunkuBankowegoItems}"
+                							var="item" itemValue="#{item}" itemLabel="#{item.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Mieszkanie:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.formaWlasnosciMiezkania}"  requiredMessage="formaWłasnosci mieszkania">
+                						<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                						<f:selectItems value="#{newAppDBController.mieszkanieTypItems}"
+                							var="item" itemValue="#{item.factorId}" itemLabel="#{item.label}"
+                						/>
+                					</p:selectOneMenu>
+                				</p:column>
+                			</p:row>
+                			<p:row>
+                				<p:column>
+                					<h:outputText value="Samochod:"/>
+                				</p:column>
+                				<p:column>
+                					<p:selectBooleanCheckbox value="#{newAppDBController.ctx.wnioskodawca.samochod}"/>
+                				</p:column>
+                			</p:row>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Adres zamieszkania" >
+                		<p:panelGrid columns="2">
+                			<h:outputText value="Ulica:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZamieszkania.ulica}"/>
+                		
+							<h:outputText value="Nr domu:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZamieszkania.nrDomu}"/>
+						
+							<h:outputText value="Nr lokalu:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZamieszkania.nrLokalu}"/>
+                		
+                			<h:outputText value="kod pocztowy:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZamieszkania.kodPocztowy}"/>
+                		
+                			<h:outputText value="Miejscowosc:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZamieszkania.miejscowosc}"/>
+                		
+                			<h:outputText value="Czas zamieszkiwania pod tym adresem:"/>
+                			<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.adresZamieszkania.czasZamieszkaniaPodAdresem}">
+                				<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+                				<f:selectItems value="#{newAppDBController.czasZamieszkiwaniaPodAdresemItems}"
+                					var="v" itemValue="#{v}" itemLabel="${v.label}"
+                				/>
+                			</p:selectOneMenu>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Adres zameldowania" >
+                		<p:panelGrid columns="2">
+                			<h:outputText value="Ulica:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZameldowania.ulica}"/>
+                		
+							<h:outputText value="Nr domu:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZameldowania.nrDomu}"/>
+						
+							<h:outputText value="Nr lokalu:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZameldowania.nrLokalu}"/>
+                		
+                			<h:outputText value="kod pocztowy:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZameldowania.kodPocztowy}"/>
+                		
+                			<h:outputText value="Miejscowosc:"/>
+                			<p:inputText  value="#{newAppDBController.ctx.wnioskodawca.adresZameldowania.miejscowosc}"/>
+                		
+                			<h:outputText value="Meldunek czasowy:"/>
+                			<p:selectBooleanCheckbox update="@all" value="#{newAppDBController.ctx.wnioskodawca.adresZameldowania.meldunekCzasowy}">
+                				
+                			</p:selectBooleanCheckbox>
+                		
+                			<h:outputText value="Meldunek czasowy do:"/>
+                			<p:calendar id="meldunek" value="#{newAppDBController.ctx.wnioskodawca.adresZameldowania.meldunekCzasowyDo}"
+                				disabled="#{!newAppDBController.ctx.wnioskodawca.adresZameldowania.meldunekCzasowy}"
+                			/>
+                		</p:panelGrid>
+                	</p:tab>
+                	<p:tab title="Dochód/Wydatki">
+                		<p:panelGrid columns="2">
+                			<h:outputText value="źródło dochodu:" />
+                			<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.dochod.typ}"  immediate="true">
+                				
+                				<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+              					<f:selectItems value="#{newAppDBController.dochodyItems}" var="d"
+              						itemValue="#{d.factorId}" itemLabel="#{d.label}"
+              					/>  				
+                			</p:selectOneMenu>
+                			
+                		</p:panelGrid>
+                		<p:panel id="dochPanel">
+                			<p:panelGrid columns="2">
+                				<h:outputText value="Kwota brutto:"/>
+                				<p:inputNumber value="#{newAppDBController.ctx.wnioskodawca.dochod.kwotaBrutto}"/>
+                				<h:outputText value="Kwota netto:"/>
+                				<p:inputNumber value="#{newAppDBController.ctx.wnioskodawca.dochod.kwotaNetto}"/>
+                				
+                				<h:outputText value="Okres od:"/>
+                				<p:calendar value="#{newAppDBController.ctx.wnioskodawca.dochod.okresOd}"/>
+                				<h:outputText value="Bezterminowo:"/>
+                				<p:selectBooleanCheckbox value="#{newAppDBController.ctx.wnioskodawca.dochod.bezterminowo}"/>
+                				<h:outputText value="Okres do:"/>
+                				<p:calendar value="#{newAppDBController.ctx.wnioskodawca.dochod.okresDo}"/>
+                				<h:outputText value="Opis:"/>
+                				<p:inputTextarea value="#{newAppDBController.ctx.wnioskodawca.dochod.opis}"/>
+                				
+                				
+                			</p:panelGrid> 
+                		</p:panel>
+                	</p:tab>
+                	<p:tab title="Dokumenty">
+                		<p:panelGrid columns="2">
+                			<h:outputText value="Dokument:" />
+                			<p:selectOneMenu value="#{newAppDBController.ctx.wnioskodawca.dokument}" >
+                				<p:ajax event="change" partialSubmit="true" process="@all"
+                					update="dokPanel,form:messages" 
+                					listener="#{newAppDBController.updateSelectedDokument}"/>
+                				<f:selectItem itemValue="" itemLabel="--wybierz--"/>
+              					<f:selectItems value="#{newAppDBController.dokumentyItems}" var="d"
+              						itemValue="#{d}" itemLabel="#{d.label}"
+              					/>  				
+                			</p:selectOneMenu>
+                		</p:panelGrid>
+                		<p:panel id="dokPanel">
+							<ui:include src="dokumenty/rmua.xhtml"></ui:include>
+							<ui:include src="dokumenty/zaswiadczenieZus.xhtml"></ui:include>
+							<ui:include src="dokumenty/odcinek.xhtml"></ui:include>
+							<ui:include src="dokumenty/decyzja.xhtml"></ui:include>
+							<ui:include src="dokumenty/pasek.xhtml"></ui:include>
+							<ui:include src="dokumenty/zaswiadczenieZp.xhtml"></ui:include>
+							<ui:include src="dokumenty/wyciagBankowy.xhtml"></ui:include>
+							<ui:include src="dokumenty/dzialalnoscGospodarcza.xhtml"></ui:include>
+							<ui:include src="dokumenty/oswiadczenie.xhtml"></ui:include>
+							<ui:include src="dokumenty/inne.xhtml"></ui:include>
+						</p:panel>
+                	</p:tab>
+                	<p:tab title="Zgody">
+                		<p:panelGrid columns="2">
+                			<h:outputText value = "Zgoda 1"/>
+                			<p:selectBooleanCheckbox />
+                			<h:outputText value = "Zgoda 2"/>
+                			<p:selectBooleanCheckbox />
+                			<h:outputText value = "Zgoda 3"/>
+                			<p:selectBooleanCheckbox />
+                			<h:outputText value = "Zgoda 4"/>
+                			<p:selectBooleanCheckbox />
+                			<h:outputText value = "Zgoda 5"/>
+                			<p:selectBooleanCheckbox/>
+                			<h:outputText value = "Zgoda 6"/>
+                			<p:selectBooleanCheckbox />
+                			<h:outputText value = "Zgoda 7"/>
+                			<p:selectBooleanCheckbox/>
+                		</p:panelGrid>
+                	</p:tab>
+                </p:tabView>
+                
+               
+                <p:commandButton value="Zapisz"  action="#{newAppDBController.saveWniosek}"  update="form:messages"/>
+                
+               
+                               
+            </h:form>
+		</ui:define>
+	
+	</ui:composition>
+
+</html>

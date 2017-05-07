@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<!--  path1 -->
+    <body>
+		<p:panel visible="#{newAppDBController.ctx.wnioskodawca.dokument == 'OSWIADCZENIE'}">
+			<h:panelGrid columns="2">
+				<h:outputText value="Skan:"/>
+				<p:selectBooleanCheckbox value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].czyZeskanowany}" />
+				<h:outputText value="Nazwa pracodawcy:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].nazwaPracodawcy}"/>
+				<h:outputText value="Ulica:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].adres.ulica}" />
+				<h:outputText value="Nr domu:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].adres.nrDomu}" />
+				<h:outputText value="Nr lokalu:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].adres.nrLokalu}" />
+				<h:outputText value="Kod pocztowy:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].adres.kodPocztowy}" />
+				<h:outputText value="Miejscowość:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].adres.miejscowosc}" />
+				<h:outputText value="Telefon:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].telefon}" />
+				<h:outputText value="Zgoda na kontakt:"/>
+				<p:selectBooleanCheckbox value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].zgodaNaKontakt}" />
+				<h:outputText value="Umowa:"/>
+				<p:selectOneMenu  value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].umowaOPrace.typ}">
+					<f:selectItem itemValue="" itemLabel="wybierz"/>
+					<f:selectItems value="#{newAppDBController.umowaTypItems}" var="item"
+						itemValue="#{item}" itemLabel="#{item.label}" 
+					/>
+				</p:selectOneMenu>
+				<h:outputText value="Data od:"/>
+				<p:calendar value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].umowaOPrace.dataOd}" />
+				<h:outputText value="Data do:"/>
+				<p:calendar value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].umowaOPrace.dataDo}" />
+				<h:outputText value="Etat:"/>
+				<p:selectOneMenu  value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].umowaOPrace.etat}">
+					<f:selectItem itemValue="" itemLabel="wybierz"/>
+					<f:selectItems value="#{newAppDBController.etatItems}" var="item"
+						itemValue="#{item}" itemLabel="#{item.label}" 
+					/>
+				</p:selectOneMenu>
+				<h:outputText value="Stanowisko:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].umowaOPrace.stanowisko}" />
+				<h:outputText value="NIP:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].nip}" />
+				<h:outputText value="REGON:"/>
+				<p:inputText value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].regon}" />
+				<h:outputText value="Okres wypowiedzenia:"/>
+				<p:selectBooleanCheckbox value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].okresWypowiedzenia}" />
+				<h:outputText value="Urlop wychowawczy:"/>
+				<p:selectBooleanCheckbox value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].urlopWychowawczy}" />
+				<h:outputText value="Urlop wychowawczy do:"/>
+				<p:calendar value="#{newAppDBController.dokumentMap['OSWIADCZENIE'].urlopWychowawczyData}" />
+			</h:panelGrid>
+		</p:panel>
+        
+    </body>
+</html>

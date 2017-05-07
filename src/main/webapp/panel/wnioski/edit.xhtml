@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<body>
+
+	<ui:composition template="/panel/templates/optimaTemplate.xhtml">
+
+		<ui:define name="left">
+			<ui:include src="/panel/menu.xhtml" />
+		</ui:define>
+
+		<ui:define name="content">
+			<!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
+			<h:form>
+				<p:growl id="growl"/>
+				<p:accordionPanel>
+					<p:tab title="Status">
+						<p:commandButton value="Zmień status na:"/>
+						<p:selectOneMenu>
+                 			<f:selectItems value="#{wniosekEditController.statusWnioskuItems}"
+                 			var="s" itemValue="#{s}" itemLabel="#{s.nazwa}"
+                 		/>
+                 		</p:selectOneMenu>
+                 		<p:growl id="growl1"/>
+                 		<p:commandButton update="growl1" value="Edytuj wniosek" action="#{newAppDBController.prepEdit()}">
+                 			<f:param name="id" value="#{wniosekEditController.ctx.id}" />
+                 		</p:commandButton>
+                 		<p:commandButton update="growl1" value="Edytuj wniosek1" action="#{newAppPrescoringDBController.prepEdit()}">
+                 			<f:param name="id" value="#{wniosekEditController.ctx.id}" />
+                 		</p:commandButton>
+					</p:tab>
+					<p:tab title="Multioferta">
+					
+					</p:tab>
+					<p:tab title="Wniosek">
+						<p:panelGrid columns="2">
+							<h:outputText value="Identyfikator wniosku:"/>
+							<h:outputText value="#{wniosekEditController.ctx.id}"/>
+							<h:outputText value="Typ:" />
+							<h:outputText value="#{wniosekEditController.ctx.wniosek.optimaTyp}"/>
+							<h:outputText value="Rodzaj:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wniosek.optimaRodzaj}"/>	
+                 			<h:outputText value="Status wniosku:"/>
+	                 		<h:outputText value="#{wniosekEditController.ctx.wniosek.statusWniosku.nazwa}"/>
+                 			<h:outputText value="Kwota:"/>
+                 			<h:outputText value="#{wniosekEditController.ctx.wniosek.kwotaKredytu}"/>
+                 			<h:outputText value="Liczba rat:"/>
+                 			<h:outputText value="#{wniosekEditController.ctx.wniosek.iloscRat}"/>
+                 		</p:panelGrid>
+					</p:tab>
+					<p:tab title="Wnioskodawca">
+						<p:panelGrid columns="2">
+							<h:outputText value="Nazwisko:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.nazwisko}"/>
+                 			<h:outputText value="Imię:"/>
+                 			<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.imie}"/>
+                 		</p:panelGrid>
+					</p:tab>
+					<p:tab title="Adres zamieszkania" titletip="fffffff">
+						<p:panelGrid columns="2">
+							<h:outputText value="Miejscowosc:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.adresZamieszkania.miejscowosc}"/>
+							<h:outputText value="Uica:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.adresZamieszkania.ulica}"/>
+							<h:outputText value="Nr domu:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.adresZamieszkania.nrDomu}"/>
+							<h:outputText value="Nr lokalu:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.adresZamieszkania.nrLokalu}"/>
+							<h:outputText value="Kod pocztowy:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.adresZamieszkania.kodPocztowy}"/>
+							<h:outputText value="Czas zamieszkania pod adresem:"/>
+							<h:outputText value="#{wniosekEditController.ctx.wnioskodawca.adresZamieszkania.czasZamieszkaniaPodAdresem.label}"/>
+						</p:panelGrid>	
+					</p:tab>
+					<p:tab title="Adres zameldowania">
+						<p:panelGrid>
+						</p:panelGrid>
+					</p:tab>
+					<p:tab title="Pliki">
+						<p:fileUpload value="#{wniosekEditController.file}"/>
+						<p:dataTable>
+						</p:dataTable>
+					</p:tab>
+					<p:tab title="Komentarz">
+						<p:editor>
+						</p:editor>
+					</p:tab>
+				</p:accordionPanel>
+                  
+            </h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
