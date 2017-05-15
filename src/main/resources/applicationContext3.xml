@@ -76,12 +76,8 @@
 	<bean id="testChannelInterceptor" class="org.kossowski.inegration.TestChannelInterceptor" />
 	-->
 
-	<int:channel id="toTypeEnricher"/>
-	<int:channel id="toTypeRouter">
-		<int:interceptors>
-			<ref bean="testChannelInterceptor" />	
-		</int:interceptors>
-	</int:channel>
+	
+	
 
 <!--  Wyłączenie odpytywania bazy factor -->
  <!-- 
@@ -94,36 +90,21 @@
 	</int-jdbc:inbound-channel-adapter>
  -->
  
- 	<int:header-enricher id="fromFactorEnricher" 	
- 		input-channel="toTypeEnricher"
- 		output-channel="toTypeRouter">
- 		
- 		<int:header name="wn_id" 		expression="@fromFactorHeaderEnricher.setId(payload)"></int:header>
- 		<int:header name="wn_status" 	expression="@fromFactorHeaderEnricher.setStatus(payload)"></int:header>
- 		<int:header name="wn_type" 		expression="@fromFactorHeaderEnricher.setType(payload)"></int:header>
- 		<int:header name="wn_timestamp" expression="@fromFactorHeaderEnricher.setTimestamp()"></int:header>
- 	</int:header-enricher>
+ 	
  
 	
 	
-	<int:channel id="chAPP"/>
-	<int:channel id="chSMS"/>
-	<int:channel id="chCNC"/>
-	<int:channel id="chRUN"/>
-	<int:channel id="chGIRO"/>
-	
-	<int:header-value-router  header-name="wn_type"  input-channel="toTypeRouter">
-		<int:mapping value="APP"  channel="chAPP"/>
-		<int:mapping value="SMS"  channel="chSMS"/>
-		<int:mapping value="CNC"  channel="chCNC"/>
-		<int:mapping value="RUN"  channel="chRUN"/>
-		<int:mapping value="GIRO" channel="chGIRO"/>
-		
-	</int:header-value-router>
 	
 	
 	
-	<int:channel id="chChainsOut"></int:channel>
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<!-- 
 	<int:service-activator
@@ -133,34 +114,20 @@
 	
 	
 	
-	<int:chain id="APPchain" input-channel="chAPP" output-channel="chChainsOut"> 
-		<int:transformer expression="@appTransformer.toOptima(payload,headers)"></int:transformer>
-	</int:chain>
 	
-	<int:chain id="SMSchain"  input-channel="chSMS" output-channel="chChainsOut">
-		<int:transformer expression="@smsTransformer.toOptima(payload,headers)"></int:transformer>
-	</int:chain>
 	
-	<int:chain id="CNCchain"  input-channel="chCNC" output-channel="chChainsOut">
-		<int:transformer expression="@cncTransformer.toOptima(payload,headers)"></int:transformer>
-	</int:chain>
 	
-	<int:chain id="RUNchain"  input-channel="chRUN" output-channel="chChainsOut">
-		<int:transformer expression="@runTransformer.toOptima(payload,headers)"></int:transformer>
-	</int:chain>
 	
-	<int:chain id="GIROchain"  input-channel="chGIRO" output-channel="chChainsOut">
-		<int:transformer expression="@giroTransformer.toOptima(payload,headers)"></int:transformer>
-	</int:chain>
+	
+	
+	
+	
+	
 	
 	
 	<bean id="outputInterceptor" class="org.kossowski.integration.OutputChannelInterceptor" />
 	
-	<int:channel id="toSetStatusTransformer">
-		<int:interceptors>
-			<ref bean="outputInterceptor"/>
-		</int:interceptors>
-	</int:channel>
+	
 	
 	
 	
@@ -177,11 +144,7 @@
 		-->
 	</bean>
 	
-	<int-xml:marshalling-transformer marshaller="marshaller" input-channel="chChainsOut"
-	output-channel="toSetStatusTransformer"
-	result-transformer="resultTransformer"
-	>
-	</int-xml:marshalling-transformer>
+	
 	
 	
 	<bean id="ftpClientFactory"
@@ -206,12 +169,7 @@
     	
 	</bean>
 	
-	<int-ftp:outbound-channel-adapter session-factory="sftpClientFactory"
-		channel="toSetStatusTransformer"
-		remote-directory="/tstautokredyty2opt"
-		remote-filename-generator-expression=
-			"headers['wn_type'] +'_' + headers['wn_id'] + '_' + headers['wn_timestamp'] + '.xml'"
-	/>
+	
 	
 	<!-- <int-ftp:inbound-channel-adapter
 		id="sftpInAdapter"
@@ -335,6 +293,5 @@
  	<int:service-activator
 		input-channel="goServAct" 
 		expression="@wniosekHandler.print(payload)" />
- 	
  	
 </beans>

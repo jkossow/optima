@@ -11,7 +11,7 @@ import org.kossowski.optima.cnc.CancelReason;
 
 @XmlRootElement( name = "cancelLoan")
 @XmlAccessorType( XmlAccessType.FIELD )
-public class CncOptima {
+public class CncOptima implements OptimaType {
 	
 	@XmlElement( name = "id" )
 	private Integer id;
@@ -48,6 +48,14 @@ public class CncOptima {
 	
 	public void setCancelReason( int id, String reason ) {
 		this.cancelReason = new CancelReason( id, reason );
+	}
+	
+	
+	
+
+	@Override
+	public String getType() {
+		return "CNC";
 	}
 
 	@Override

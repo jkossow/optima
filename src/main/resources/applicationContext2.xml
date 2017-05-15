@@ -336,5 +336,4 @@
 		input-channel="goServAct" 
 		expression="@wniosekHandler.print(payload)" />
  	
- 	
 </beans>

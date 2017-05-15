@@ -16,7 +16,7 @@
 
 		<ui:define name="content">
 			<!-- View id &nbsp; <h:outputText value="#{view.viewId}" /> -->
-			<h:form>
+			<h:form id="form">
 				<p:growl id="growl"/>
 				<p:accordionPanel>
 					<p:tab title="Status">
@@ -33,6 +33,9 @@
                  		<p:commandButton update="growl1" value="Edytuj wniosek1" action="#{newAppPrescoringDBController.prepEdit()}">
                  			<f:param name="id" value="#{wniosekEditController.ctx.id}" />
                  		</p:commandButton>
+					</p:tab>
+					<p:tab title="Operacje">
+						<p:commandButton value="Wyślij prescoring" action="#{wniosekEditController.sendPrescoring}" update="form:growl"></p:commandButton>
 					</p:tab>
 					<p:tab title="Multioferta">
 					

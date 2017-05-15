@@ -1,5 +1,6 @@
 package org.kossowski.optima.web.controllers;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.integration.sftp.session.DefaultSftpSessionFactory;
+import org.springframework.integration.sftp.session.SftpSession;
 import org.springframework.stereotype.Controller;
 
 @ManagedBean
@@ -33,6 +36,9 @@ public class WniosekEditController implements Serializable {
 		
 		@Autowired
 		protected FactorJpaService factorService;
+		
+		@Autowired
+		protected DefaultSftpSessionFactory sftpSessionFactory;
 	
 		protected FactorDatabaseContext ctx = new FactorDatabaseContext();
 		
@@ -58,6 +64,18 @@ public class WniosekEditController implements Serializable {
 		}
 		
 		
+		public String sendPrescoring() {
+			JSFUtils.addMessage("Wysyłam prescoring");
+			
+			SftpSession session = sftpSessionFactory.getSession();
+			
+			try {
+				//session.write()
+				session.mkdir("fff");
+			} catch ( IOException e ) { e.printStackTrace(); }; 
+			
+			return "";
+		}
 		
 		public void statusAction( ActionEvent event) {
 			

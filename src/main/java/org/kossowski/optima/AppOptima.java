@@ -29,7 +29,7 @@ import org.kossowski.optima.util.DateFormatterAdapter;
 @XmlRootElement(name="document")
 @XmlAccessorType( XmlAccessType.FIELD )
 @XmlType( propOrder = { "naglowek", "dane" } )
-public class AppOptima {
+public class AppOptima implements OptimaType {
 
 	@XmlAttribute
 	@XmlJavaTypeAdapter( DateFormatterAdapter.class )
@@ -73,7 +73,6 @@ public class AppOptima {
 		this.dane = dane;
 	}
 
-	
 	
 	
 	public static void main( String[] args ) throws Exception {
@@ -189,6 +188,11 @@ public class AppOptima {
 		AppOptima wniosek = new AppOptimaPrescoringBuilder().build();
 		m.marshal( wniosek ,  System.out);
 		
+	}
+
+	@Override
+	public String getType() {
+		return "APP";
 	}
 	
 }
